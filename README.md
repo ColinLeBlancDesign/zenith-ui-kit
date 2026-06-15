@@ -41,7 +41,7 @@ npm run dev          # terminal 2 — run the Next.js site at localhost:3000
 ```
 
 The site imports the library exactly as an external consumer would
-(`import { Button } from "zenith-ui"`), so what you see is what npm users get.
+(`import { Button } from "zenith-ui-kit"`), so what you see is what npm users get.
 
 ## Build
 
@@ -71,15 +71,14 @@ vercel --prod     # production
 
 ## Publish the package to npm
 
+The package is published as [`zenith-ui-kit`](https://www.npmjs.com/package/zenith-ui-kit).
+
 ```bash
+npm login                       # one-time, with your npm account
 cd packages/zenith-ui
 npm run build
-npm publish        # access is already set to public in package.json
+npm publish                     # access is already public in package.json
 ```
-
-> The package name `zenith-ui` may be taken on the public registry — if so,
-> scope it (e.g. `@your-handle/zenith-ui`) by editing `name` in
-> `packages/zenith-ui/package.json`.
 
 ## License
 

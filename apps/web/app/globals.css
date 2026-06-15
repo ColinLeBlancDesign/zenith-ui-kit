@@ -418,67 +418,6 @@ button {
   color: var(--accent);
 }
 
-/* ---- Figma callout ---- */
-.figma-card {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 22px 24px;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-4);
-  background: var(--card-bg);
-  box-shadow: var(--shadow-sm);
-  margin-top: 18px;
-}
-.figma-card__icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--surface);
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-}
-.figma-card__body {
-  flex: 1;
-  min-width: 0;
-}
-.figma-card__title {
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--text-primary);
-  margin-bottom: 2px;
-}
-.figma-card__desc {
-  font-size: 13.5px;
-  color: var(--text-secondary);
-}
-
-/* ---- Overview feature grid ---- */
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  margin-top: 8px;
-}
-.feature {
-  padding: 20px;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-4);
-  background: var(--card-bg);
-}
-.feature__k {
-  font-family: var(--font-serif);
-  font-size: 30px;
-  line-height: 1;
-  color: var(--text-primary);
-  margin-bottom: 8px;
-}
-.feature__v {
-  font-size: 13.5px;
-  color: var(--text-secondary);
-}
-
 /* ---- Narrow screens: collapse the rail into a scrollable top bar ---- */
 @media (max-width: 1080px) {
   .docs {

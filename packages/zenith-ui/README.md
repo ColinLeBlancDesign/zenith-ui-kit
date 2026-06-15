@@ -6,14 +6,14 @@ variables, zero runtime dependencies. Built from the Zenith UI Figma kit.
 ## Install
 
 ```bash
-npm i zenith-ui
+npm i zenith-ui-kit
 ```
 
 ## Use
 
 ```tsx
-import { Button, Pill, Input } from "zenith-ui";
-import "zenith-ui/styles.css"; // once, at the root of your app
+import { Button, Pill, Input } from "zenith-ui-kit";
+import "zenith-ui-kit/styles.css"; // once, at the root of your app
 
 export default function App() {
   return (

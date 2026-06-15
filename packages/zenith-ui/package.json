@@ -1,8 +1,16 @@
 {
-  "name": "zenith-ui",
+  "name": "zenith-ui-kit",
   "version": "0.1.0",
   "description": "A dark-first, accessible React component library. 12 components, 14 Figma designs, zero runtime dependencies.",
   "license": "MIT",
+  "author": "Colin LeBlanc",
+  "homepage": "https://github.com/ColinLeBlancDesign/zenith-ui-kit#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ColinLeBlancDesign/zenith-ui-kit.git",
+    "directory": "packages/zenith-ui"
+  },
+  "bugs": "https://github.com/ColinLeBlancDesign/zenith-ui-kit/issues",
   "type": "module",
   "sideEffects": [
     "**/*.css"
@@ -30,7 +38,8 @@
   ],
   "scripts": {
     "build": "npm run build --prefix ../tokens && tsup",
-    "dev": "npm run build --prefix ../tokens && tsup --watch"
+    "dev": "npm run build --prefix ../tokens && tsup --watch",
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "react": ">=18",

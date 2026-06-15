@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   // Build the local workspace package from source.
-  transpilePackages: ["zenith-ui"],
+  transpilePackages: ["zenith-ui-kit"],
 };
 
 export default nextConfig;

@@ -14,13 +14,13 @@ import {
   Pill,
   Tooltip,
   Card,
-} from "zenith-ui";
+} from "zenith-ui-kit";
 import { ThemeToggle } from "./theme-toggle";
 import { Demo, InstallCommand } from "./demo";
 
 const FIGMA_URL =
   "https://www.figma.com/community/file/1647841337852944963";
-const NPM_URL = "https://www.npmjs.com/package/zenith-ui";
+const NPM_URL = "https://www.npmjs.com/package/zenith-ui-kit";
 
 /* ----------------------------- interactive demos ----------------------------- */
 
@@ -139,46 +139,10 @@ const SECTIONS: SectionDef[] = [
           </a>
         </div>
 
-        <div className="figma-card">
-          <div className="figma-card__icon">
-            <FigmaGlyph />
-          </div>
-          <div className="figma-card__body">
-            <div className="figma-card__title">Designers — grab the kit</div>
-            <div className="figma-card__desc">
-              The full Zenith UI Kit is published to the Figma Community. Duplicate
-              it and design with the same components shipped here.
-            </div>
-          </div>
-          <a
-            className="btn-pill btn-pill--ghost"
-            href={FIGMA_URL}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Open file
-          </a>
-        </div>
-
-        <div className="feature-grid" style={{ marginTop: 18 }}>
-          <div className="feature">
-            <div className="feature__k">12</div>
-            <div className="feature__v">Components covering 14 Figma frames</div>
-          </div>
-          <div className="feature">
-            <div className="feature__k">2</div>
-            <div className="feature__v">Light &amp; dark themes via CSS variables</div>
-          </div>
-          <div className="feature">
-            <div className="feature__k">0</div>
-            <div className="feature__v">Runtime dependencies</div>
-          </div>
-        </div>
-
         <h2 className="main__sub">Install &amp; use</h2>
         <Demo
-          code={`import { Button, Pill } from "zenith-ui";
-import "zenith-ui/styles.css";
+          code={`import { Button, Pill } from "zenith-ui-kit";
+import "zenith-ui-kit/styles.css";
 
 export default function App() {
   return (
@@ -598,18 +562,6 @@ function ArrowIcon() {
       aria-hidden
     >
       <path d="M7 7h10v10M7 17 17 7" />
-    </svg>
-  );
-}
-
-function FigmaGlyph({ size = 22 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M8.5 24a3.5 3.5 0 0 0 3.5-3.5V17H8.5a3.5 3.5 0 1 0 0 7Z" fill="#0ACF83" />
-      <path d="M5 12a3.5 3.5 0 0 1 3.5-3.5H12v7H8.5A3.5 3.5 0 0 1 5 12Z" fill="#A259FF" />
-      <path d="M5 4.5A3.5 3.5 0 0 1 8.5 1H12v7H8.5A3.5 3.5 0 0 1 5 4.5Z" fill="#F24E1E" />
-      <path d="M12 1h3.5a3.5 3.5 0 1 1 0 7H12V1Z" fill="#FF7262" />
-      <path d="M19 12a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" fill="#1ABCFE" />
     </svg>
   );
 }

@@ -8,13 +8,13 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "npm run build -w zenith-ui && npm run build -w web",
+    "build": "npm run build -w zenith-ui-kit && npm run build -w web",
     "build:tokens": "npm run build -w @zenith-ui/tokens",
-    "build:lib": "npm run build -w zenith-ui",
+    "build:lib": "npm run build -w zenith-ui-kit",
     "build:web": "npm run build -w web",
     "dev": "npm run dev -w web",
-    "dev:lib": "npm run dev -w zenith-ui",
-    "dev:all": "concurrently -k -n lib,web -c magenta,cyan \"npm run dev -w zenith-ui\" \"npm run dev -w web\"",
+    "dev:lib": "npm run dev -w zenith-ui-kit",
+    "dev:all": "concurrently -k -n lib,web -c magenta,cyan \"npm run dev -w zenith-ui-kit\" \"npm run dev -w web\"",
     "lint": "npm run lint -w web"
   },
   "devDependencies": {

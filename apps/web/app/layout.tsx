@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "zenith-ui/styles.css";
+import "zenith-ui-kit/styles.css";
 import "./globals.css";
 
 const inter = Inter({

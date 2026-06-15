@@ -18,7 +18,7 @@ export function CopyButton({ text }: { text: string }) {
   );
 }
 
-export function InstallCommand({ cmd = "npm i zenith-ui" }: { cmd?: string }) {
+export function InstallCommand({ cmd = "npm i zenith-ui-kit" }: { cmd?: string }) {
   return (
     <div className="install">
       <span className="install__dollar">$</span>
