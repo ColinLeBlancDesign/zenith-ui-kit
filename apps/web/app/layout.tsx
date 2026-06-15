@@ -12,7 +12,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Zenith UI — a React component library",
   description:
-    "11 accessible, themeable React components. Browse them, copy the code, install the package. Built from the Zenith UI Figma kit.",
+    "12 accessible, themeable React components. Browse them, copy the code, install the package. Built from the Zenith UI Figma kit.",
   openGraph: {
     title: "Zenith UI",
     description: "A themeable, accessible React component library.",

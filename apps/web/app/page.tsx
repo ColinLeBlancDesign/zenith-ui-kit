@@ -125,14 +125,13 @@ const SECTIONS: SectionDef[] = [
       <>
         <div className="stage-row" style={{ gap: 12, marginBottom: 24 }}>
           <InstallCommand />
-          <a
-            className="btn-pill btn-pill--primary"
-            href={FIGMA_URL}
-            target="_blank"
-            rel="noreferrer"
+          <Button
+            onClick={() =>
+              window.open(FIGMA_URL, "_blank", "noopener,noreferrer")
+            }
           >
             Open Figma Kit
-          </a>
+          </Button>
         </div>
 
         <h2 className="main__sub">Install &amp; use</h2>

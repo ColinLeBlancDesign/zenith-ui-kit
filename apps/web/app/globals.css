@@ -393,12 +393,13 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 12px;
+  height: 34px; /* match the Zenith Button (md) height */
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
   font-size: 13.5px;
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-2);
-  padding: 10px 14px;
+  padding: 0 14px;
   color: var(--text-primary);
   box-shadow: var(--shadow-sm);
 }
