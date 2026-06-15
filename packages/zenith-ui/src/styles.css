@@ -260,7 +260,7 @@
   transform: scale(0.6);
   transition: opacity 0.12s ease, transform 0.12s ease;
 }
-.zen-checkbox:hover .zen-checkbox__box {
+.zen-checkbox:not(.zen-checkbox--disabled):hover .zen-checkbox__box {
   border-color: var(--zen-accent);
 }
 .zen-vh-input:checked + .zen-checkbox__box {
@@ -322,7 +322,7 @@
   transform: scale(0);
   transition: transform 0.12s ease;
 }
-.zen-radio:hover .zen-radio__circle {
+.zen-radio:not(.zen-radio--disabled):hover .zen-radio__circle {
   border-color: var(--zen-accent);
 }
 .zen-vh-input:checked + .zen-radio__circle {
