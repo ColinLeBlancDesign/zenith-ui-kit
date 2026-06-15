@@ -10,6 +10,7 @@ import {
   RadioCard,
   Input,
   SearchField,
+  Combobox,
   Pill,
   Tooltip,
   Card,
@@ -71,6 +72,36 @@ function RadioCardDemo() {
   );
 }
 
+const INDUSTRIES = [
+  { value: "tech", label: "Technology & Software" },
+  { value: "finance", label: "Finance & Banking" },
+  { value: "health", label: "Healthcare" },
+  { value: "retail", label: "Retail & E-commerce" },
+  { value: "education", label: "Education" },
+];
+
+function ComboboxDemo() {
+  const [industry, setIndustry] = useState("");
+  return (
+    <>
+      <Combobox
+        label="Preferred industry"
+        placeholder="Select an industry…"
+        options={INDUSTRIES}
+        value={industry}
+        onValueChange={setIndustry}
+      />
+      <Combobox label="Pre-filled" options={INDUSTRIES} defaultValue="tech" />
+      <Combobox
+        label="Disabled"
+        options={INDUSTRIES}
+        placeholder="Not available"
+        disabled
+      />
+    </>
+  );
+}
+
 /* --------------------------------- sections --------------------------------- */
 
 type SectionDef = {
@@ -93,7 +124,7 @@ const SECTIONS: SectionDef[] = [
       </>
     ),
     lede:
-      "Eleven accessible React components from the Zenith Figma kit. Browse them on the left, copy the code, and ship. Light and dark themes included.",
+      "Twelve accessible React components from the Zenith Figma kit. Browse them on the left, copy the code, and ship. Light and dark themes included.",
     content: (
       <>
         <div className="stage-row" style={{ gap: 12, marginBottom: 24 }}>
@@ -131,8 +162,8 @@ const SECTIONS: SectionDef[] = [
 
         <div className="feature-grid" style={{ marginTop: 18 }}>
           <div className="feature">
-            <div className="feature__k">11</div>
-            <div className="feature__v">Components covering 13 Figma frames</div>
+            <div className="feature__k">12</div>
+            <div className="feature__v">Components covering 14 Figma frames</div>
           </div>
           <div className="feature">
             <div className="feature__k">2</div>
@@ -315,6 +346,33 @@ export default function App() {
     ),
   },
   {
+    key: "combobox",
+    name: "Combobox",
+    eyebrow: "Forms",
+    title: "Combobox",
+    lede:
+      "A select-only combobox: a labelled trigger and a keyboard-navigable listbox. Arrow keys to move, Enter to select, or type to jump to an option.",
+    content: (
+      <Demo
+        column
+        allowOverflow
+        code={`<Combobox
+  label="Preferred industry"
+  placeholder="Select an industry…"
+  options={[
+    { value: "tech", label: "Technology & Software" },
+    { value: "finance", label: "Finance & Banking" },
+    // …
+  ]}
+  value={industry}
+  onValueChange={setIndustry}
+/>`}
+      >
+        <ComboboxDemo />
+      </Demo>
+    ),
+  },
+  {
     key: "pill",
     name: "Pill",
     eyebrow: "Display",
@@ -429,7 +487,7 @@ const GROUPS: { label: string; keys: string[] }[] = [
   { label: "Get started", keys: ["overview"] },
   { label: "Actions", keys: ["button", "textbutton"] },
   { label: "Selection", keys: ["checkbox", "radio", "switch", "radiocard"] },
-  { label: "Forms", keys: ["input", "search"] },
+  { label: "Forms", keys: ["input", "search", "combobox"] },
   { label: "Display", keys: ["pill", "tooltip", "card"] },
 ];
 

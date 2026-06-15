@@ -56,6 +56,20 @@ export function PlusIcon(props: IconProps) {
   );
 }
 
+export function ChevronDownIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
+      <path
+        d="M4 6L8 10L12 6"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function ImagePlaceholderIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 40 40" fill="none" aria-hidden="true" {...props}>

@@ -32,13 +32,15 @@ export function Demo({
   children,
   code,
   column,
+  allowOverflow,
 }: {
   children: ReactNode;
   code?: string;
   column?: boolean;
+  allowOverflow?: boolean;
 }) {
   return (
-    <div className="demo">
+    <div className={"demo" + (allowOverflow ? " demo--overflow" : "")}>
       <div className={"demo__stage" + (column ? " demo__stage--col" : "")}>
         {children}
       </div>

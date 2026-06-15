@@ -22,6 +22,9 @@ export type { InputProps } from "./components/Input";
 export { SearchField } from "./components/SearchField";
 export type { SearchFieldProps } from "./components/SearchField";
 
+export { Combobox } from "./components/Combobox";
+export type { ComboboxProps, ComboboxOption } from "./components/Combobox";
+
 export { Pill } from "./components/Pill";
 export type { PillProps, PillColor } from "./components/Pill";
 

@@ -1,6 +1,6 @@
 # Zenith UI
 
-A dark-first, accessible React component library. 11 components, themeable via CSS
+A dark-first, accessible React component library. 12 components, themeable via CSS
 variables, zero runtime dependencies. Built from the Zenith UI Figma kit.
 
 ## Install
@@ -59,6 +59,7 @@ If you don't set `data-theme`, Zenith follows the user's
 | `RadioCard` | `title`, `description`, `pill`, `controlSide` |
 | `Input` | `label`, `clearable`, `onValueChange`, `onClear` |
 | `SearchField` | `clearable`, `onValueChange`, `onClear` |
+| `Combobox` | `options`, `label`, `placeholder`, `value`, `onValueChange`, `disabled` |
 | `Pill` | `color` (`info` \| `promo` \| `success` \| `alert` \| `warning`) |
 | `Tooltip` | `title`, `content`, `side`, `open` |
 | `Card` | `Card.Image`, `Card.Title`, `Card.Description`, `Card.List`, `Card.Section` |

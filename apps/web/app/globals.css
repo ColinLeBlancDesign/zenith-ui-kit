@@ -337,6 +337,13 @@ button {
 .demo + .demo {
   margin-top: 18px;
 }
+/* Let popovers (e.g. the combobox menu) escape the card */
+.demo--overflow {
+  overflow: visible;
+}
+.demo--overflow .demo__stage {
+  border-radius: var(--radius-5) var(--radius-5) 0 0;
+}
 .demo__stage {
   display: flex;
   flex-wrap: wrap;

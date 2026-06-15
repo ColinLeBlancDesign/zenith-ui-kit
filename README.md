@@ -27,10 +27,10 @@ The library build runs it automatically (tokens → library → site).
 
 ## What's inside
 
-**11 components, covering all 13 Figma frames:** Button (primary / secondary /
+**12 components, covering all 14 Figma frames:** Button (primary / secondary /
 tertiary), TextButton, Checkbox, Radio, Switch, RadioCard, Input, SearchField,
-Pill, Tooltip and a composable Card. Both **light and dark themes** ship as CSS
-variables.
+Combobox, Pill, Tooltip and a composable Card. Both **light and dark themes** ship
+as CSS variables.
 
 ## Develop
 
