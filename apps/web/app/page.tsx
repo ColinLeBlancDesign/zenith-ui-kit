@@ -131,7 +131,7 @@ const SECTIONS: SectionDef[] = [
             target="_blank"
             rel="noreferrer"
           >
-            Open in Figma
+            Open Figma Kit
           </a>
         </div>
 
@@ -276,7 +276,7 @@ export default function App() {
   },
   {
     key: "input",
-    name: "Input",
+    name: "Input Field",
     eyebrow: "Forms",
     title: "Input field",
     lede:
@@ -379,22 +379,32 @@ export default function App() {
     lede: "Hover or focus the trigger. Points from any of four sides.",
     content: (
       <Demo
+        allowOverflow
         code={`<Tooltip side="top" title="Heading" content="Enter a short text description here.">
   <Button variant="secondary">Hover me</Button>
 </Tooltip>`}
       >
-        <Tooltip side="top" title="Heading" content="Enter a short text description here.">
-          <Button variant="secondary">Top</Button>
-        </Tooltip>
-        <Tooltip side="bottom" title="Heading" content="Enter a short text description here.">
-          <Button variant="secondary">Bottom</Button>
-        </Tooltip>
-        <Tooltip side="left" title="Heading" content="Short description.">
-          <Button variant="secondary">Left</Button>
-        </Tooltip>
-        <Tooltip side="right" title="Heading" content="Short description.">
-          <Button variant="secondary">Right</Button>
-        </Tooltip>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 5,
+            alignItems: "flex-start",
+          }}
+        >
+          <Tooltip side="top" title="Heading" content="Enter a short text description here.">
+            <Button variant="secondary">Top</Button>
+          </Tooltip>
+          <Tooltip side="bottom" title="Heading" content="Enter a short text description here.">
+            <Button variant="secondary">Bottom</Button>
+          </Tooltip>
+          <Tooltip side="left" title="Heading" content="Short description.">
+            <Button variant="secondary">Left</Button>
+          </Tooltip>
+          <Tooltip side="right" title="Heading" content="Short description.">
+            <Button variant="secondary">Right</Button>
+          </Tooltip>
+        </div>
       </Demo>
     ),
   },
