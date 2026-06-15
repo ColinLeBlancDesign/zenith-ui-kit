@@ -118,11 +118,7 @@ const SECTIONS: SectionDef[] = [
     key: "overview",
     name: "Overview",
     eyebrow: "Component library",
-    title: (
-      <>
-        Build interfaces, <em>faster</em>.
-      </>
-    ),
+    title: "Build interfaces, faster.",
     lede:
       "Twelve accessible React components from the Zenith Figma kit. Browse them on the left, copy the code, and ship. Light and dark themes included.",
     content: (
@@ -508,6 +504,14 @@ export default function Home() {
                 rel="noreferrer"
               >
                 npm <ArrowIcon />
+              </a>
+              <a
+                className="nav-btn"
+                href="https://colin.cv?ref=zenith"
+                target="_blank"
+                rel="noreferrer"
+              >
+                colin.cv <ArrowIcon />
               </a>
               <div className="nav-divider" />
               <ThemeToggle />
