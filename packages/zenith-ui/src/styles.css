@@ -1,0 +1,762 @@
+/* ============================================================================
+   Zenith UI — component styles.
+   Design tokens live in packages/tokens (Style Dictionary) and are generated
+   into tokens.generated.css. Import once in your app:
+     import "zenith-ui/styles.css";
+   ========================================================================== */
+@import "./tokens.generated.css";
+
+/* ----------------------------------------------------------------------------
+   2. Base
+   -------------------------------------------------------------------------- */
+.zen-btn,
+.zen-textbtn,
+.zen-checkbox,
+.zen-radio,
+.zen-switch,
+.zen-radiocard,
+.zen-field,
+.zen-search,
+.zen-pill,
+.zen-card,
+.zen-tooltip {
+  font-family: var(--zen-font);
+  box-sizing: border-box;
+}
+.zen-btn *,
+.zen-radiocard *,
+.zen-card *,
+.zen-field *,
+.zen-search * {
+  box-sizing: border-box;
+}
+
+/* Shared focus ring */
+.zen-focus-ring {
+  box-shadow: 0 0 0 2px var(--zen-ring-offset), 0 0 0 4px var(--zen-accent);
+}
+
+/* Visually-hidden native input that stays accessible */
+.zen-vh-input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+/* ----------------------------------------------------------------------------
+   3. Button (primary / secondary / tertiary)
+   -------------------------------------------------------------------------- */
+.zen-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--zen-space-5);
+  padding: 8px var(--zen-space-15);
+  border: 1.5px solid transparent;
+  border-radius: var(--zen-radius-m);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.zen-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--zen-ring-offset), 0 0 0 4px var(--zen-accent);
+}
+.zen-btn:disabled,
+.zen-btn[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+.zen-btn--sm {
+  padding: 5px var(--zen-space-10);
+  font-size: 13px;
+}
+
+.zen-btn--primary {
+  background: var(--zen-fill);
+  color: var(--zen-text-invert);
+}
+.zen-btn--primary:hover:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--zen-fill-hover);
+}
+.zen-btn--primary:disabled,
+.zen-btn--primary[aria-disabled="true"] {
+  background: var(--zen-disabled-bg);
+  color: var(--zen-text-disabled);
+}
+
+.zen-btn--secondary {
+  background: transparent;
+  color: var(--zen-text);
+  border-color: var(--zen-border-strong);
+}
+.zen-btn--secondary:hover:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--zen-surface-2);
+}
+.zen-btn--secondary:disabled,
+.zen-btn--secondary[aria-disabled="true"] {
+  background: var(--zen-disabled-bg);
+  color: var(--zen-text-disabled);
+  border-color: transparent;
+}
+
+.zen-btn--tertiary {
+  background: transparent;
+  color: var(--zen-text);
+  padding-left: var(--zen-space-10);
+  padding-right: var(--zen-space-10);
+}
+.zen-btn--tertiary:hover:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--zen-surface-2);
+}
+.zen-btn--tertiary:disabled,
+.zen-btn--tertiary[aria-disabled="true"] {
+  color: var(--zen-text-disabled);
+}
+
+.zen-btn--block {
+  width: 100%;
+}
+
+/* ----------------------------------------------------------------------------
+   4. Text button
+   -------------------------------------------------------------------------- */
+.zen-textbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--zen-space-5);
+  padding: 4px var(--zen-space-2);
+  background: none;
+  border: none;
+  border-radius: var(--zen-radius-m);
+  color: var(--zen-accent);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+  transition: box-shadow 0.15s ease, color 0.15s ease;
+}
+.zen-textbtn:hover:not(:disabled) {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.zen-textbtn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--zen-ring-offset), 0 0 0 4px var(--zen-accent);
+}
+.zen-textbtn:disabled {
+  color: var(--zen-text-disabled);
+  cursor: not-allowed;
+}
+.zen-textbtn__icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Confirmable ("Added") behaviour — cross-fade + slide between two states,
+   stacked in one grid cell so the width never jumps. */
+.zen-textbtn__swap {
+  display: grid;
+  align-items: center;
+}
+.zen-textbtn__state {
+  grid-area: 1 / 1;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--zen-space-5);
+  white-space: nowrap;
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+.zen-textbtn__state--added {
+  opacity: 0;
+  transform: translateY(6px);
+  color: var(--zen-success);
+}
+.zen-textbtn--added .zen-textbtn__state--default {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+.zen-textbtn--added .zen-textbtn__state--added {
+  opacity: 1;
+  transform: translateY(0);
+}
+.zen-textbtn--added:hover {
+  text-decoration: none;
+}
+.zen-textbtn--added .zen-textbtn__state--added .zen-textbtn__icon {
+  animation: zen-textbtn-pop 0.34s ease;
+}
+.zen-textbtn--added .zen-textbtn__state--added .zen-textbtn__icon path {
+  stroke-dasharray: 20;
+  animation: zen-textbtn-draw 0.42s ease 0.05s;
+}
+@keyframes zen-textbtn-pop {
+  0% {
+    transform: scale(0.4);
+  }
+  60% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/* Resting state is fully drawn (dashoffset 0); the keyframe draws it in. */
+@keyframes zen-textbtn-draw {
+  from {
+    stroke-dashoffset: 20;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .zen-textbtn__state {
+    transition: none;
+  }
+  .zen-textbtn--added .zen-textbtn__state--added .zen-textbtn__icon,
+  .zen-textbtn--added .zen-textbtn__state--added .zen-textbtn__icon path {
+    animation: none;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   5. Checkbox
+   -------------------------------------------------------------------------- */
+.zen-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--zen-space-10);
+  font-size: 15px;
+  color: var(--zen-text);
+  cursor: pointer;
+  position: relative;
+}
+.zen-checkbox__box {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border: 1.5px solid var(--zen-border-strong);
+  border-radius: var(--zen-radius-s);
+  background: var(--zen-surface);
+  display: grid;
+  place-items: center;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.zen-checkbox__check {
+  width: 12px;
+  height: 12px;
+  color: var(--zen-text-invert);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.12s ease, transform 0.12s ease;
+}
+.zen-checkbox:hover .zen-checkbox__box {
+  border-color: var(--zen-accent);
+}
+.zen-vh-input:checked + .zen-checkbox__box {
+  background: var(--zen-accent);
+  border-color: var(--zen-accent);
+}
+.zen-vh-input:checked + .zen-checkbox__box .zen-checkbox__check {
+  opacity: 1;
+  transform: scale(1);
+}
+.zen-vh-input:focus-visible + .zen-checkbox__box {
+  box-shadow: 0 0 0 2px var(--zen-ring-offset), 0 0 0 4px var(--zen-accent);
+}
+.zen-checkbox--disabled {
+  cursor: not-allowed;
+  color: var(--zen-text-disabled);
+}
+.zen-checkbox--disabled .zen-checkbox__box {
+  background: var(--zen-disabled-bg);
+  border-color: transparent;
+}
+.zen-checkbox--disabled .zen-vh-input:checked + .zen-checkbox__box {
+  background: var(--zen-disabled-bg);
+}
+.zen-checkbox--disabled .zen-checkbox__check {
+  color: var(--zen-text-disabled);
+}
+
+/* ----------------------------------------------------------------------------
+   6. Radio
+   -------------------------------------------------------------------------- */
+.zen-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--zen-space-10);
+  font-size: 15px;
+  color: var(--zen-text);
+  cursor: pointer;
+}
+.zen-radio__circle {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  border: 1.75px solid var(--zen-border-strong);
+  border-radius: var(--zen-radius-round);
+  background: var(--zen-surface);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.zen-radio__circle::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 7px;
+  height: 7px;
+  border-radius: var(--zen-radius-round);
+  background: var(--zen-accent);
+  transform: scale(0);
+  transition: transform 0.12s ease;
+}
+.zen-radio:hover .zen-radio__circle {
+  border-color: var(--zen-accent);
+}
+.zen-vh-input:checked + .zen-radio__circle {
+  border-color: var(--zen-accent);
+  border-width: 2px;
+}
+.zen-vh-input:checked + .zen-radio__circle::after {
+  transform: scale(1);
+}
+.zen-vh-input:focus-visible + .zen-radio__circle {
+  box-shadow: 0 0 0 2px var(--zen-ring-offset), 0 0 0 4px var(--zen-accent);
+}
+.zen-radio--disabled {
+  cursor: not-allowed;
+  color: var(--zen-text-disabled);
+}
+.zen-radio--disabled .zen-radio__circle {
+  background: var(--zen-surface);
+  border-color: var(--zen-text-disabled);
+}
+.zen-radio--disabled .zen-radio__circle::after {
+  background: var(--zen-text-disabled);
+}
+
+/* ----------------------------------------------------------------------------
+   7. Switch
+   -------------------------------------------------------------------------- */
+.zen-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--zen-space-10);
+  font-size: 15px;
+  color: var(--zen-text);
+  cursor: pointer;
+}
+.zen-switch__track {
+  position: relative;
+  width: 32px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: var(--zen-radius-round);
+  background: var(--zen-switch-off);
+  transition: background-color 0.18s ease, box-shadow 0.15s ease;
+}
+.zen-switch__knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: var(--zen-radius-round);
+  background: var(--zen-switch-knob);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  transition: transform 0.18s ease;
+}
+.zen-vh-input:checked + .zen-switch__track {
+  background: var(--zen-accent);
+}
+.zen-vh-input:checked + .zen-switch__track .zen-switch__knob {
+  transform: translateX(14px);
+}
+.zen-vh-input:focus-visible + .zen-switch__track {
+  box-shadow: 0 0 0 2px var(--zen-ring-offset), 0 0 0 4px var(--zen-accent);
+}
+.zen-switch--disabled {
+  cursor: not-allowed;
+  color: var(--zen-text-disabled);
+}
+/* Disabled: grey-mid track fill, grey-dark knob (overrides the active colour) */
+.zen-switch--disabled .zen-switch__track,
+.zen-switch--disabled .zen-vh-input:checked + .zen-switch__track {
+  background: var(--zen-disabled-bg);
+}
+.zen-switch--disabled .zen-switch__knob {
+  background: var(--zen-grey-dark);
+  box-shadow: none;
+}
+
+/* ----------------------------------------------------------------------------
+   8. Radio card
+   -------------------------------------------------------------------------- */
+.zen-radiocard {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 1.5px solid var(--zen-border);
+  border-radius: var(--zen-radius-l);
+  background: var(--zen-surface);
+  padding: var(--zen-space-15);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.zen-radiocard:hover {
+  background: var(--zen-accent-subtle);
+}
+/* Pills invert (swap text/surface) when the card is hovered or selected */
+.zen-radiocard:hover .zen-pill,
+.zen-radiocard--selected .zen-pill,
+.zen-radiocard:has(.zen-radiocard__input:checked) .zen-pill {
+  background: var(--zen-pill-fg);
+  color: var(--zen-pill-bg);
+}
+.zen-radiocard__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--zen-space-10);
+}
+.zen-radiocard__lead {
+  display: flex;
+  align-items: center;
+  gap: var(--zen-space-10);
+  min-width: 0;
+}
+.zen-radiocard__trail {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.zen-radiocard__title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--zen-text);
+}
+.zen-radiocard__desc {
+  margin: var(--zen-space-10) 0 0;
+  font-size: 12px;
+  color: var(--zen-text-secondary);
+  line-height: 1.4;
+}
+.zen-radiocard--selected,
+.zen-radiocard:has(.zen-radiocard__input:checked) {
+  border-color: var(--zen-accent);
+  background: var(--zen-accent-subtle);
+}
+/* The whole card shows the focus ring, so suppress the inner atom's own ring */
+.zen-radiocard .zen-vh-input:focus-visible + .zen-radio__circle {
+  box-shadow: none;
+}
+.zen-radiocard:has(.zen-radiocard__input:focus-visible) {
+  border-color: var(--zen-accent);
+  box-shadow: 0 0 0 2px var(--zen-ring-offset), 0 0 0 4px var(--zen-accent);
+}
+
+/* ----------------------------------------------------------------------------
+   9. Input field + Search field
+   -------------------------------------------------------------------------- */
+.zen-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--zen-space-5);
+  width: 100%;
+}
+.zen-field__label {
+  font-size: 12px;
+  color: var(--zen-text-secondary);
+}
+.zen-input,
+.zen-search__box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1.5px solid var(--zen-border);
+  border-radius: var(--zen-radius-m);
+  background: var(--zen-surface);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.zen-input:focus-within,
+.zen-search__box:focus-within {
+  border-color: var(--zen-accent);
+}
+.zen-input__el {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: none;
+  color: var(--zen-text);
+  font-family: var(--zen-font);
+  font-size: 15px;
+}
+.zen-input__el::placeholder {
+  color: var(--zen-text-secondary);
+}
+.zen-input__el:disabled {
+  cursor: not-allowed;
+}
+.zen-input--disabled,
+.zen-search__box.zen-search--disabled {
+  background: var(--zen-disabled-bg);
+  border-color: transparent;
+}
+.zen-input--disabled .zen-input__el {
+  color: var(--zen-text-disabled);
+}
+.zen-field__icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--zen-text-secondary);
+}
+.zen-field__clear {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: var(--zen-radius-s);
+  background: transparent;
+  color: var(--zen-text);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.12s ease, box-shadow 0.12s ease;
+}
+.zen-field__clear:hover {
+  background: var(--zen-surface-2);
+}
+.zen-field__clear:focus-visible {
+  outline: none;
+  background: var(--zen-accent-subtle);
+  box-shadow: 0 0 0 1.5px var(--zen-accent);
+  color: var(--zen-accent);
+}
+.zen-field__clear svg {
+  width: 12px;
+  height: 12px;
+}
+
+.zen-search {
+  width: 100%;
+}
+.zen-input__el[type="search"]::-webkit-search-cancel-button,
+.zen-input__el[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* ----------------------------------------------------------------------------
+   10. Pill
+   -------------------------------------------------------------------------- */
+.zen-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--zen-space-5) var(--zen-space-10);
+  border-radius: var(--zen-radius-round);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: capitalize;
+  white-space: nowrap;
+  background: var(--zen-pill-bg);
+  color: var(--zen-pill-fg);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.zen-pill--info {
+  --zen-pill-bg: var(--zen-info-bg);
+  --zen-pill-fg: var(--zen-info);
+}
+.zen-pill--promo {
+  --zen-pill-bg: var(--zen-promo-bg);
+  --zen-pill-fg: var(--zen-promo);
+}
+.zen-pill--success {
+  --zen-pill-bg: var(--zen-success-bg);
+  --zen-pill-fg: var(--zen-success);
+}
+.zen-pill--alert {
+  --zen-pill-bg: var(--zen-alert-bg);
+  --zen-pill-fg: var(--zen-alert);
+}
+.zen-pill--warning {
+  --zen-pill-bg: var(--zen-warning-bg);
+  --zen-pill-fg: var(--zen-warning);
+}
+/* Inverted: solid fill with swapped text/surface */
+.zen-pill--inverted {
+  background: var(--zen-pill-fg);
+  color: var(--zen-pill-bg);
+}
+
+/* ----------------------------------------------------------------------------
+   11. Tooltip
+   -------------------------------------------------------------------------- */
+.zen-tooltip {
+  position: relative;
+  display: inline-flex;
+}
+.zen-tooltip__content {
+  position: absolute;
+  z-index: 50;
+  width: max-content;
+  max-width: 220px;
+  padding: var(--zen-space-10) 12px;
+  background: var(--zen-surface);
+  border-radius: var(--zen-radius-m);
+  box-shadow: var(--zen-tooltip-shadow);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.97);
+  transition: opacity 0.14s ease, transform 0.14s ease, visibility 0.14s;
+  pointer-events: none;
+}
+.zen-tooltip[data-open="true"] .zen-tooltip__content,
+.zen-tooltip:hover .zen-tooltip__content,
+.zen-tooltip:focus-within .zen-tooltip__content {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+.zen-tooltip__title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--zen-text);
+}
+.zen-tooltip__body {
+  margin-top: 3px;
+  font-size: 12px;
+  color: var(--zen-text-secondary);
+  line-height: 1.4;
+}
+.zen-tooltip__arrow {
+  position: absolute;
+  color: var(--zen-surface);
+  line-height: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.12));
+}
+.zen-tooltip__arrow svg {
+  display: block;
+  width: 18px;
+  height: 8px;
+}
+/* placement — the beak SVG points downward by default */
+.zen-tooltip__content--top {
+  bottom: calc(100% + 9px);
+  left: 50%;
+  translate: -50% 0;
+}
+.zen-tooltip__content--top .zen-tooltip__arrow {
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -1px);
+}
+.zen-tooltip__content--bottom {
+  top: calc(100% + 9px);
+  left: 50%;
+  translate: -50% 0;
+}
+.zen-tooltip__content--bottom .zen-tooltip__arrow {
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, 1px) rotate(180deg);
+}
+.zen-tooltip__content--left {
+  right: calc(100% + 9px);
+  top: 50%;
+  translate: 0 -50%;
+}
+.zen-tooltip__content--left .zen-tooltip__arrow {
+  left: 100%;
+  top: 50%;
+  transform: translate(-5px, -50%) rotate(-90deg);
+}
+.zen-tooltip__content--right {
+  left: calc(100% + 9px);
+  top: 50%;
+  translate: 0 -50%;
+}
+.zen-tooltip__content--right .zen-tooltip__arrow {
+  right: 100%;
+  top: 50%;
+  transform: translate(5px, -50%) rotate(90deg);
+}
+
+/* ----------------------------------------------------------------------------
+   12. Card
+   -------------------------------------------------------------------------- */
+.zen-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--zen-space-15);
+  background: var(--zen-surface);
+  border: 1px solid var(--zen-border);
+  border-radius: var(--zen-radius-l);
+  padding: var(--zen-space-15);
+  box-shadow: var(--zen-shadow);
+}
+.zen-card__image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: 1.5px dashed var(--zen-text-secondary);
+  border-radius: var(--zen-radius-m);
+  background: var(--zen-surface-2);
+  display: grid;
+  place-items: center;
+  color: var(--zen-text-secondary);
+  overflow: hidden;
+}
+.zen-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.zen-card__title {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--zen-text);
+  margin: 0;
+}
+.zen-card__desc {
+  font-size: 12px;
+  color: var(--zen-text-secondary);
+  margin: 4px 0 0;
+  line-height: 1.4;
+}
+.zen-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--zen-space-10);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.zen-card__list li {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--zen-text);
+}
+.zen-card__section + .zen-card__section {
+  padding-top: var(--zen-space-15);
+  border-top: 1px solid var(--zen-border);
+}

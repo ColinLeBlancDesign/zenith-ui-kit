@@ -1,0 +1,51 @@
+{
+  "name": "zenith-ui",
+  "version": "0.1.0",
+  "description": "A dark-first, accessible React component library. 11 components, 13 Figma designs, zero runtime dependencies.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "design-system",
+    "zenith"
+  ],
+  "scripts": {
+    "build": "npm run build --prefix ../tokens && tsup",
+    "dev": "npm run build --prefix ../tokens && tsup --watch"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@zenith-ui/tokens": "*",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,32 @@
+# dependencies
+node_modules/
+
+# builds
+dist/
+.next/
+out/
+build/
+
+# logs
+*.log
+npm-debug.log*
+
+# env
+.env
+.env*.local
+
+# os / editor
+.DS_Store
+.vscode/
+.idea/
+
+# vercel
+.vercel
+
+# tsbuild
+*.tsbuildinfo
+next-env.d.ts
+
+# local figma helper scratch
+.scripts/shots/
+.scripts/assets/

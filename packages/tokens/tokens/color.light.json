@@ -1,0 +1,22 @@
+{
+  "color": {
+    "black": { "$value": "#000000", "$type": "color" },
+    "white": { "$value": "#ffffff", "$type": "color" },
+    "grey-darkest": { "$value": "#282828", "$type": "color" },
+    "grey-darker": { "$value": "#5b5b5b", "$type": "color" },
+    "grey-dark": { "$value": "#9e9e9e", "$type": "color" },
+    "grey-mid": { "$value": "#d8d8d8", "$type": "color" },
+    "grey-light": { "$value": "#f7f7f7", "$type": "color" },
+    "blue-500": { "$value": "#5d75fe", "$type": "color" },
+    "blue-50": { "$value": "#ecf3ff", "$type": "color" },
+    "purple-500": { "$value": "#9866eb", "$type": "color" },
+    "purple-50": { "$value": "#f7f4fe", "$type": "color" },
+    "green-500": { "$value": "#0ee132", "$type": "color" },
+    "green-50": { "$value": "#eefff0", "$type": "color" },
+    "red-500": { "$value": "#e05353", "$type": "color" },
+    "red-400": { "$value": "#ea6e6e", "$type": "color" },
+    "red-50": { "$value": "#fdf3f3", "$type": "color" },
+    "yellow-500": { "$value": "#f1b10e", "$type": "color" },
+    "yellow-50": { "$value": "#fdfbe9", "$type": "color" }
+  }
+}

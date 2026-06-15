@@ -1,0 +1,13 @@
+{
+  "name": "@zenith-ui/tokens",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Design tokens for Zenith UI — the single source of truth, built with Style Dictionary into CSS variables, a Tokens Studio file for Figma, and resolved JSON.",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.3.0"
+  }
+}

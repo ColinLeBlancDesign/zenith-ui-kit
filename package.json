@@ -1,0 +1,26 @@
+{
+  "name": "zenith-ui-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Zenith UI — a dark-first React component library, plus its documentation site.",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w zenith-ui && npm run build -w web",
+    "build:tokens": "npm run build -w @zenith-ui/tokens",
+    "build:lib": "npm run build -w zenith-ui",
+    "build:web": "npm run build -w web",
+    "dev": "npm run dev -w web",
+    "dev:lib": "npm run dev -w zenith-ui",
+    "dev:all": "concurrently -k -n lib,web -c magenta,cyan \"npm run dev -w zenith-ui\" \"npm run dev -w web\"",
+    "lint": "npm run lint -w web"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=18.18"
+  }
+}

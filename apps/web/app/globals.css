@@ -1,0 +1,505 @@
+/* ============================================================================
+   Site chrome — styled after colin.cv (warm light palette, #0a6cff accent,
+   soft cards, floating pill nav). Inter is used throughout for both the site
+   and the Zenith components.
+   ========================================================================== */
+
+:root {
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  /* Inter everywhere — including where a display face was previously used */
+  --font-serif: var(--font-sans);
+
+  /* Keep the Zenith components on the same font as the site */
+  --zen-font: var(--font-sans);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --radius-2: 8px;
+  --radius-3: 12px;
+  --radius-4: 16px;
+  --radius-5: 20px;
+}
+
+/* ---- Light theme (colin.cv palette) ---- */
+:root,
+:root[data-theme="light"] {
+  --background: #fcfcfa;
+  --surface: #f6f6f6;
+  --border-color: rgba(50, 60, 79, 0.11);
+  --text-primary: #323c4f;
+  --text-secondary: #6b6e76;
+  --text-tertiary: #9ba1a5;
+  --accent: #0a6cff;
+  --accent-hover: #0456d1;
+  --accent-subtle: rgba(10, 108, 255, 0.07);
+  --nav-bg: rgba(255, 255, 255, 0.82);
+  --card-bg: #ffffff;
+  --shadow-sm: 0 1px 3px rgba(50, 60, 79, 0.07), 0 1px 2px rgba(50, 60, 79, 0.04);
+  --shadow-md: 0 4px 16px rgba(50, 60, 79, 0.08), 0 1px 4px rgba(50, 60, 79, 0.05);
+  --shadow-lg: 0 12px 40px rgba(50, 60, 79, 0.1), 0 4px 12px rgba(50, 60, 79, 0.06);
+}
+
+/* ---- Dark theme ---- */
+:root[data-theme="dark"] {
+  --background: #0d0f12;
+  --surface: #1c2128;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --text-primary: #e8eaed;
+  --text-secondary: #8b9099;
+  --text-tertiary: #565c66;
+  --accent: #4d90fe;
+  --accent-hover: #79b2e0;
+  --accent-subtle: rgba(77, 144, 254, 0.1);
+  --nav-bg: rgba(22, 26, 31, 0.85);
+  --card-bg: #161a1f;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+  background: var(--background);
+  /* Always reserve space for the scrollbar so pages don't shift horizontally
+     when content switches between scrollable and non-scrollable. */
+  scrollbar-gutter: stable;
+}
+body {
+  font-family: var(--font-sans);
+  background: var(--background);
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ---- Floating pill nav (colin.cv) ---- */
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-top: var(--space-6);
+  z-index: 200;
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 760px) 1fr;
+  padding: 0 20px;
+  pointer-events: none;
+}
+.nav-wrap {
+  grid-column: 2;
+  background: var(--nav-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  pointer-events: all;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 10px 0 var(--space-5);
+}
+.nav-logo {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  border-radius: var(--radius-2);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.nav-btn:hover {
+  color: var(--text-primary);
+  background: var(--accent-subtle);
+}
+.nav-btn svg {
+  width: 12px;
+  height: 12px;
+}
+.nav-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--border-color);
+  margin: 0 4px;
+}
+.theme-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: none;
+  border-radius: var(--radius-2);
+  color: var(--text-secondary);
+  transition: color 0.15s, background 0.15s;
+}
+.theme-btn:hover {
+  color: var(--text-primary);
+  background: var(--accent-subtle);
+}
+.theme-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: opacity 0.18s ease, border-color 0.18s ease, color 0.18s ease,
+    background 0.18s ease;
+  white-space: nowrap;
+}
+.btn-pill--primary {
+  background: var(--text-primary);
+  color: var(--background);
+}
+.btn-pill--primary:hover {
+  opacity: 0.78;
+}
+.btn-pill--ghost {
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+.btn-pill--ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-subtle);
+}
+/* ---- Docs layout ---- */
+/* Sidebar is a fixed rail 96px from the left; the main column is centered in
+   the space beside it. */
+.docs {
+  padding: 96px 0 0 0;
+}
+
+.side {
+  position: fixed;
+  left: 24px;
+  top: 96px;
+  width: 244px;
+  height: calc(100dvh - 96px);
+  overflow-y: auto;
+  padding: 8px 16px 48px;
+}
+.side__group + .side__group {
+  margin-top: 22px;
+}
+.side__label {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-tertiary);
+  padding: 0 12px;
+  margin-bottom: 8px;
+}
+.side__item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  border-radius: var(--radius-2);
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  transition: color 0.13s ease, background 0.13s ease;
+}
+.side__item:hover {
+  color: var(--text-primary);
+  background: var(--surface);
+}
+.side__item--active {
+  color: var(--accent);
+  background: var(--accent-subtle);
+  font-weight: 500;
+}
+.side__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.45;
+  flex-shrink: 0;
+}
+.side__item--active .side__dot {
+  opacity: 1;
+}
+
+/* ---- Main panel ---- */
+.main {
+  /* Left edge lines up with .nav-wrap (the pill's outer edge); clamped so it
+     always clears the fixed sidebar (96px + 244px rail). */
+  margin-left: max(352px, calc((100% - 760px) / 2));
+  margin-right: auto;
+  max-width: 760px;
+  padding: 16px 24px 96px 0;
+  min-height: calc(100dvh - 96px);
+}
+.main__eyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-tertiary);
+  margin-bottom: 14px;
+}
+.main__title {
+  font-size: clamp(34px, 5vw, 46px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+.main__title em {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.01em;
+}
+.main__lede {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin-bottom: 36px;
+}
+.main__sub {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 40px 0 14px;
+  letter-spacing: -0.01em;
+}
+
+/* ---- Demo card ---- */
+.demo {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-5);
+  overflow: hidden;
+  background: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+}
+.demo + .demo {
+  margin-top: 18px;
+}
+.demo__stage {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 22px;
+  padding: 44px;
+  background-color: var(--surface);
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    var(--border-color) 1px,
+    transparent 0
+  );
+  background-size: 22px 22px;
+}
+.demo__stage--col {
+  flex-direction: column;
+  align-items: stretch;
+}
+.demo__code {
+  margin: 0;
+  padding: 18px 22px;
+  border-top: 1px solid var(--border-color);
+  background: var(--card-bg);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.stage-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+.stage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+/* ---- Install command ---- */
+.install {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 13.5px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-2);
+  padding: 10px 14px;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
+.install__dollar {
+  color: var(--text-tertiary);
+}
+.copy-btn {
+  border: none;
+  background: var(--surface);
+  color: var(--text-secondary);
+  border-radius: 6px;
+  padding: 4px 9px;
+  font-size: 12px;
+  transition: color 0.15s, background 0.15s;
+}
+.copy-btn:hover {
+  color: var(--accent);
+}
+
+/* ---- Figma callout ---- */
+.figma-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 24px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-4);
+  background: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+  margin-top: 18px;
+}
+.figma-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--surface);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.figma-card__body {
+  flex: 1;
+  min-width: 0;
+}
+.figma-card__title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+.figma-card__desc {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+}
+
+/* ---- Overview feature grid ---- */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+.feature {
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-4);
+  background: var(--card-bg);
+}
+.feature__k {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  line-height: 1;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.feature__v {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+}
+
+/* ---- Narrow screens: collapse the rail into a scrollable top bar ---- */
+@media (max-width: 1080px) {
+  .docs {
+    padding: 88px 0 0 0;
+  }
+  .side {
+    position: static;
+    width: auto;
+    height: auto;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 14px 16px;
+  }
+  .side__group + .side__group {
+    margin-top: 0;
+  }
+  .side__label {
+    display: none;
+  }
+  .side__item {
+    white-space: nowrap;
+    width: auto;
+  }
+  .main {
+    max-width: none;
+    margin: 0;
+    padding: 32px 20px 72px;
+  }
+}
